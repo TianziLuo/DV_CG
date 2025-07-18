@@ -44,7 +44,7 @@ TASKS = [
         "name": "Return IN",
         "source_path": Path(r"C:\Frank\2.1_易仓管理.xlsx"),
         "sheet_name": "Return",
-        "col_range": (7, 10),               # G‑I → 模板 A‑C
+        "col_range": (7, 10),               # G‑I 
         "template_path": Path(r"C:\Template\入库.xlsx"),
         "template_sheet": "Worksheet 1",
         "output_prefix": "入库_return",

@@ -24,14 +24,14 @@ def execute_task(task):
 def create_gui():
     win = tk.Tk()
     win.title("🐶 DV Doggo - cg Edition")
-    win.geometry("420x580")
+    win.geometry("420x570")
     win.resizable(False, False)
     win.configure(bg="#FFF8E7")  
 
     # ---- Top label ----
     tk.Label(
         win,
-        text="🐾 cg Delivery Center 🐕💨",
+        text="🎨 cg Delivery Center 🐕💨",
         font=("Segoe UI", 20, "bold"),
         fg="#834D17",       # Paw orange
         bg="#FFF8E7"
@@ -69,15 +69,15 @@ def create_gui():
         btn.bind("<Enter>", on_enter)
         btn.bind("<Leave>", on_leave)
 
-# ---- Frame: Tools (for Transfer Task) ----
-    tool_frame = tk.LabelFrame(win, text="📤 Transfer Task", padx=10, pady=8,
+# ---- Frame: Transfer Task ----
+    tool_frame = tk.LabelFrame(win, text="🔁 Transfer Task", padx=10, pady=8,
                                bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
     tool_frame.pack(fill="x", padx=20, pady=(0, 12))
 
     transfer_btn = tk.Button(
         tool_frame,
         text="📋 Paste & Export",
-        width=24,
+        width=20,
         font=('Segoe UI', 12, 'bold'),
         bg="#FFD993",
         fg="#4B3B2A",

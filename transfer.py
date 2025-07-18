@@ -2,10 +2,11 @@ import openpyxl
 import tkinter as tk
 from tkinter import simpledialog, messagebox
 from datetime import datetime
-from excel_utils import save_as_xls  # your conversion function
+from excel_utils import save_as_xls  
 import os
 
 def stock_transfer():
+
     # Popup input for multiline data
     root = tk.Tk()
     root.withdraw()
@@ -54,7 +55,7 @@ def stock_transfer():
     # Convert xlsx to xls
     save_as_xls(output_path_xlsx, output_path_xls)
 
-    # Delete the xlsx file, keep only xls
+    # Delete the xlsx file
     try:
         os.remove(output_path_xlsx)
     except Exception as e:
