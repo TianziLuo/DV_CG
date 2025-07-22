@@ -5,8 +5,8 @@ TASKS = [
     {
         "name": "DV OUT",
         "source_path": Path(r"C:\Frank\2.1_易仓管理.xlsx"),
-        "sheet_name": "515自发货",
-        "col_range": (24, 27),             
+        "sheet_name": "小票_店小秘非BW",
+        "col_range": (28, 31),             
         "template_path": Path(r"C:\Template\出库.xlsx"),
         "template_sheet": "Worksheet 1",
         "output_prefix": "出库_DV",
