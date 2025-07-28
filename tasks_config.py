@@ -24,7 +24,7 @@ TASKS = [
         "name": "FBA OUT",
         "source_path": Path(r"C:\Frank\3.1_FBA.xlsx"),
         "sheet_name": "FBA扣减库存",
-        "col_range": (20, 23),              # T‑W
+        "col_range": (7, 10),             
         "template_path": Path(r"C:\Template\出库.xlsx"),
         "template_sheet": "Worksheet 1",
         "output_prefix": "出库_FBA",
@@ -33,7 +33,7 @@ TASKS = [
         "name": "FBA OUT 2",
         "source_path": Path(r"C:\Frank\3.1_FBA.xlsx"),
         "sheet_name": "FBA扣减库存",
-        "col_range": (43, 46),              # AQ‑AT
+        "col_range": (19, 22),              
         "template_path": Path(r"C:\Template\出库.xlsx"),
         "template_sheet": "Worksheet 1",
         "output_prefix": "出库_FBA_2",
