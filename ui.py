@@ -13,7 +13,7 @@ from utils import get_task_category, on_enter, on_leave
 def create_gui():
     win = tk.Tk()
     win.title("🐶 DV Doggo - cg Edition")
-    win.geometry("460x720")
+    win.geometry("460x750")
     win.resizable(False, False)
     win.configure(bg="#FFF8E7")
 
