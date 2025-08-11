@@ -5,7 +5,7 @@ import os
 import traceback
 
 from tasks_config import TASKS
-from excel_utils import (
+from utils_func.excel_utils import (
     verify_file_fresh,
     load_worksheet,
     find_last_data_row,

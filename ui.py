@@ -5,15 +5,17 @@ import sys
 
 from tasks_config import TASKS
 from task_runner import run_task
-from transfer import stock_transfer
+from utils_func.transfer import stock_transfer
 from walmart import WFS
+from inventory_check import inventory_check
+from packing_detail import packing_detail
 from console_redirector import ConsoleRedirector
-from utils import get_task_category, on_enter, on_leave
+from task_cate import get_task_category, on_enter, on_leave
 
 def create_gui():
     win = tk.Tk()
     win.title("🐶 DV Doggo - cg Edition")
-    win.geometry("460x750")
+    win.geometry("460x850")
     win.resizable(False, False)
     win.configure(bg="#FFF8E7")
 
@@ -64,19 +66,6 @@ def create_gui():
         btn.bind("<Enter>", on_enter)
         btn.bind("<Leave>", on_leave)
 
-    # --- Transfer Frame ---
-    transfer_frame = tk.LabelFrame(win, text="🔁 Transfer Task", padx=10, pady=8,
-                                   bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
-    transfer_frame.pack(fill="x", padx=20, pady=(0, 12))
-
-    tk.Button(
-        transfer_frame,
-        text="📋 Paste & Export", width=20,
-        font=('Segoe UI', 12, 'bold'),
-        bg="#FFD993", fg="#4B3B2A",
-        relief="raised", bd=2,
-        command=stock_transfer
-    ).pack(pady=4)
 
     # --- Walmart Frame ---
     walmart_frame = tk.LabelFrame(win, text="🛒 Walmart", padx=10, pady=8,
@@ -91,6 +80,39 @@ def create_gui():
         relief="raised", bd=2,
         command=WFS
     ).pack(pady=4)
+
+    # --- Others Frame ---
+    others_frame = tk.LabelFrame(win, text="🔁 Other  Tools", padx=10, pady=8,
+                                  bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
+    others_frame.pack(fill="x", padx=20, pady=(0, 12))
+
+    tk.Button(
+        others_frame,
+        text="📋 Stock Transfer", width=20,
+        font=('Segoe UI', 12, 'bold'),
+        bg="#FFD993", fg="#4B3B2A",
+        relief="raised", bd=2,
+        command=stock_transfer
+    ).pack(pady=4)
+
+    tk.Button(
+        others_frame,
+        text="📋 Inventory Check", width=20,
+        font=('Segoe UI', 12, 'bold'),
+        bg="#FFD993", fg="#4B3B2A",
+        relief="raised", bd=2,
+        command=inventory_check
+    ).pack(pady=4)
+
+    tk.Button(
+        others_frame,
+        text="📋 Packing Details", width=20,
+        font=('Segoe UI', 12, 'bold'),
+        bg="#FFD993", fg="#4B3B2A",
+        relief="raised", bd=2,
+        command=packing_detail
+    ).pack(pady=4)
+
 
     # --- Exit Button ---
     tk.Button(
