@@ -49,4 +49,13 @@ TASKS = [
         "template_sheet": "Worksheet 1",
         "output_prefix": "入库_return",
     },
+    {
+        "name": "ADJUST STOCK",
+        "source_path": Path(r"C:\Frank\2.7_调仓.xlsx"),
+        "sheet_name": "位置包数转换",
+        "col_range": (4, 9),              
+        "template_path": Path(r"C:\Template\batch_adjust_stock.xlsx"),
+        "template_sheet": "Worksheet 1",
+        "output_prefix": "batch_adjust_stock",
+    },
 ]
