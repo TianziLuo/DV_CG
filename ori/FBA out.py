@@ -7,7 +7,7 @@ import sys
 
 #------- config --------
 MAX_FILE_AGE = 30  # Save time in 30s
-source_path = r"C:\Frank\3.1_FBA.xlsx"
+source_path = r"C:\ACT\公用核心\3.1_FBA.xlsx"
 template_path = r"C:\Template\出库.xlsx"
 
 # Verify that the source file is fresh enough

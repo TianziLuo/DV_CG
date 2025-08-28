@@ -40,11 +40,18 @@ def process_excel_data(
     for line in user_input.strip().splitlines():
         row = line.strip().split("\t")
         if len(row) >= required_columns:
-            try:
-                mapped_row = [row[col_index] for col_index in column_mapping.values()]
-                data.append(mapped_row)
-            except IndexError:
-                continue  # Skip rows with invalid/missing columns
+            mapped_row = []
+            for col_index in column_mapping.values():
+                if isinstance(col_index, int):
+                    try:
+                        mapped_row.append(row[col_index])
+                    except IndexError:
+                        mapped_row.append("")  # 
+                else:
+                    # input
+                    mapped_row.append(col_index)
+            data.append(mapped_row)
+
     if not data:
         messagebox.showerror("Error", "Parsed data is empty or invalid.")
         return

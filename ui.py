@@ -6,16 +6,18 @@ import sys
 from tasks_config import TASKS
 from task_runner import run_task
 from utils_func.transfer import stock_transfer
-from walmart import WFS
+from WFS.WFS_up import WFS_upload
+from WFS.WFS_out import WFS_out
 from inventory_check import inventory_check
 from packing_detail import packing_detail
 from console_redirector import ConsoleRedirector
 from task_cate import get_task_category, on_enter, on_leave
 
+
 def create_gui():
     win = tk.Tk()
     win.title("🐶 DV Doggo - cg Edition")
-    win.geometry("460x850")
+    win.geometry("820x600")
     win.resizable(False, False)
     win.configure(bg="#FFF8E7")
 
@@ -26,16 +28,44 @@ def create_gui():
         fg="#834D17", bg="#FFF8E7"
     ).pack(pady=(16, 8))
 
-    # --- Inbound / Outbound Frames ---
-    in_frame = tk.LabelFrame(win, text="📥 Inbound Task", padx=10, pady=8,
+    # --- Main container (2 columns) ---
+    main_frame = tk.Frame(win, bg="#FFF8E7")
+    main_frame.pack(fill="both", expand=True, padx=20, pady=10)
+
+    left_col = tk.Frame(main_frame, bg="#FFF8E7")
+    left_col.pack(side="left", fill="both", expand=True, padx=(0, 10))
+
+    right_col = tk.Frame(main_frame, bg="#FFF8E7")
+    right_col.pack(side="right", fill="both", expand=True, padx=(10, 0))
+
+    # --- Inbound / Outbound Frames (Left) ---
+    in_frame = tk.LabelFrame(left_col, text="📥 Inbound Task", padx=10, pady=8,
                              bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
-    in_frame.pack(fill="x", padx=20, pady=(6, 10))
+    in_frame.pack(fill="x", pady=(0, 12))
 
-    out_frame = tk.LabelFrame(win, text="📤 Outbound Tasks", padx=10, pady=8,
+    out_frame = tk.LabelFrame(left_col, text="📤 Outbound Tasks", padx=10, pady=8,
                               bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
-    out_frame.pack(fill="x", padx=20, pady=(0, 12))
+    out_frame.pack(fill="x", pady=(0, 12))
 
-    # --- Task Buttons ---
+    # --- Walmart / Others (Right) ---
+    walmart_frame = tk.LabelFrame(right_col, text="🛒 Walmart", padx=10, pady=8,
+                                  bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
+    walmart_frame.pack(fill="x", pady=(0, 12))
+
+    others_frame = tk.LabelFrame(right_col, text="🔁 Other Tools", padx=10, pady=8,
+                                 bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
+    others_frame.pack(fill="x", pady=(0, 12))
+
+    # --- Exit Button ---
+    tk.Button(
+        right_col,
+        text="🐶 Exit Program", width=20,
+        font=('Segoe UI', 12, 'bold'),
+        bg="#E57373", fg="#fff",
+        command=win.quit
+    ).pack(pady=(20, 10))
+
+    # --- Task Execution Helper ---
     def execute_task(task):
         try:
             print(f"[RUN] Executing task: {task['name']} ...")
@@ -49,7 +79,7 @@ def create_gui():
             print(f"[ERROR] Exception occurred: {e}")
             messagebox.showerror("Error", f"❌ Exception: {e}")
 
-
+    # --- Create TASK Buttons ---
     for task in TASKS:
         cat = get_task_category(task)
         parent = in_frame if cat == "in" else out_frame
@@ -66,26 +96,26 @@ def create_gui():
         btn.bind("<Enter>", on_enter)
         btn.bind("<Leave>", on_leave)
 
-
-    # --- Walmart Frame ---
-    walmart_frame = tk.LabelFrame(win, text="🛒 Walmart", padx=10, pady=8,
-                                  bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
-    walmart_frame.pack(fill="x", padx=20, pady=(0, 12))
-
+    # --- Walmart Buttons ---
     tk.Button(
         walmart_frame,
-        text="💾 Save As", width=20,
+        text="💾 WFS Upload", width=20,
         font=('Segoe UI', 12, 'bold'),
         bg="#FFD993", fg="#4B3B2A",
         relief="raised", bd=2,
-        command=WFS
+        command=WFS_upload
     ).pack(pady=4)
 
-    # --- Others Frame ---
-    others_frame = tk.LabelFrame(win, text="🔁 Other  Tools", padx=10, pady=8,
-                                  bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
-    others_frame.pack(fill="x", padx=20, pady=(0, 12))
+    tk.Button(
+        walmart_frame,
+        text="💾 WFS Outbound", width=20,
+        font=('Segoe UI', 12, 'bold'),
+        bg="#FFD993", fg="#4B3B2A",
+        relief="raised", bd=2,
+        command=WFS_out
+    ).pack(pady=4)
 
+    # --- Others Buttons ---
     tk.Button(
         others_frame,
         text="📋 Stock Transfer", width=20,
@@ -112,16 +142,6 @@ def create_gui():
         relief="raised", bd=2,
         command=packing_detail
     ).pack(pady=4)
-
-
-    # --- Exit Button ---
-    tk.Button(
-        win,
-        text="🐶 Exit Program", width=20,
-        font=('Segoe UI', 12, 'bold'),
-        bg="#E57373", fg="#fff",
-        command=win.quit
-    ).pack(pady=(10, 10))
 
     # --- Console Log ---
     tk.Label(

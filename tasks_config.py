@@ -4,7 +4,7 @@ TASKS = [
     # ----- Out -----
     {
         "name": "DV OUT",
-        "source_path": Path(r"C:\Frank\2.1_易仓管理.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\2.1_易仓管理.xlsx"),
         "sheet_name": "小票_店小秘非BW",
         "col_range": (26, 29),             
         "template_path": Path(r"C:\Template\出库.xlsx"),
@@ -13,7 +13,7 @@ TASKS = [
     },
     {
         "name": "RAW OUT",
-        "source_path": Path(r"C:\Frank\2.1_易仓管理.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\2.1_易仓管理.xlsx"),
         "sheet_name": "RAW扫码出库",
         "col_range": (5, 8),                # E‑H
         "template_path": Path(r"C:\Template\出库.xlsx"),
@@ -22,7 +22,7 @@ TASKS = [
     },
     {
         "name": "FBA OUT",
-        "source_path": Path(r"C:\Frank\3.1_FBA.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\3.1_FBA.xlsx"),
         "sheet_name": "FBA扣减库存",
         "col_range": (7, 10),             
         "template_path": Path(r"C:\Template\出库.xlsx"),
@@ -31,7 +31,7 @@ TASKS = [
     },
     {
         "name": "FBA OUT 2",
-        "source_path": Path(r"C:\Frank\3.1_FBA.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\3.1_FBA.xlsx"),
         "sheet_name": "FBA扣减库存",
         "col_range": (19, 22),              
         "template_path": Path(r"C:\Template\出库.xlsx"),
@@ -42,7 +42,7 @@ TASKS = [
     # ----- In -----
     {
         "name": "Return IN",
-        "source_path": Path(r"C:\Frank\2.1_易仓管理.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\2.1_易仓管理.xlsx"),
         "sheet_name": "Return",
         "col_range": (7, 10),               # G‑I 
         "template_path": Path(r"C:\Template\入库.xlsx"),
@@ -51,7 +51,7 @@ TASKS = [
     },
     {
         "name": "ADJUST STOCK",
-        "source_path": Path(r"C:\Frank\2.7_调仓.xlsx"),
+        "source_path": Path(r"C:\ACT\公用核心\2.7_调仓.xlsx"),
         "sheet_name": "位置包数转换",
         "col_range": (4, 9),              
         "template_path": Path(r"C:\Template\batch_adjust_stock.xlsx"),

@@ -7,7 +7,7 @@ import sys
 
 #------- Config --------
 MAX_FILE_AGE = 30  # Save time in 30s
-source_path = r"C:\Frank\2.1_易仓管理.xlsx"
+source_path = r"C:\ACT\公用核心\2.1_易仓管理.xlsx"
 template_path = r"C:\Template\出库.xlsx"
 
 # Verify that the source file is fresh enough
