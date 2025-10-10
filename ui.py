@@ -10,6 +10,7 @@ from WFS.WFS_up import WFS_upload
 from WFS.WFS_out import WFS_out
 from inventory_check import inventory_check
 from packing_detail import packing_detail
+from error_code_process import text_errorcode
 from console_redirector import ConsoleRedirector
 from task_cate import get_task_category, on_enter, on_leave
 
@@ -56,13 +57,15 @@ def create_gui():
                                  bg="#FAF3DD", fg="#4B3B2A", font=("Segoe UI", 10, "bold"))
     others_frame.pack(fill="x", pady=(0, 12))
 
-    # --- Exit Button ---
+    # --- Debug Button ---
     tk.Button(
-        right_col,
-        text="🐶 Exit Program", width=20,
-        font=('Segoe UI', 12, 'bold'),
-        bg="#E57373", fg="#fff",
-        command=win.quit
+    right_col,
+    text="🐶 Fix Error",
+    width=20,
+    font=('Segoe UI', 12, 'bold'),
+    bg="#E57373",
+    fg="#e0d9d9",
+    command=text_errorcode
     ).pack(pady=(20, 10))
 
     # --- Task Execution Helper ---
@@ -143,7 +146,7 @@ def create_gui():
         command=packing_detail
     ).pack(pady=4)
 
-    # --- Console Log ---
+     # --- Console Log ---
     tk.Label(
         win, text="📋 Console Log:",
         font=("Segoe UI", 10, "bold"),
